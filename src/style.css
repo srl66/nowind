@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 主题令牌：浅色 = 暖白纸面（类 Claude），暗色 = 低对比石墨 */
+:root {
+  --c-canvas: 250 249 247;
+  --c-surface: 255 255 255;
+  --c-sidebar: 244 242 238;
+  --c-ink: 40 39 37;
+  --c-muted: 128 123 116;
+  --c-line: 232 227 219;
+  --c-accent: 214 116 84;
+  --c-accent-soft: 250 236 230;
+  --c-danger: 199 84 74;
+  color-scheme: light;
+}
+
+.dark {
+  --c-canvas: 30 29 28;
+  --c-surface: 40 39 37;
+  --c-sidebar: 24 23 22;
+  --c-ink: 236 233 228;
+  --c-muted: 156 150 142;
+  --c-line: 58 55 51;
+  --c-accent: 226 143 111;
+  --c-accent-soft: 58 40 33;
+  --c-danger: 226 116 104;
+  color-scheme: dark;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+}
+
+body {
+  @apply bg-canvas text-ink antialiased;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "PingFang SC",
+    "Microsoft YaHei", "Helvetica Neue", sans-serif;
+  font-feature-settings: "cv11", "ss01";
+  text-rendering: optimizeLegibility;
+}
+
+/* 统一滚动条：细、无箭头、跟随主题 */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--c-line));
+  border-radius: 999px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--c-muted) / 0.55);
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+
+/* 输入框焦点：只留一层极淡的强调色描边，避免“重边框” */
+.field {
+  @apply w-full rounded-xl bg-surface border border-line px-3.5 py-2.5 text-[13px] text-ink
+    placeholder:text-muted/70 outline-none transition;
+}
+.field:focus {
+  @apply border-accent/60 ring-4 ring-accent/10;
+}
+
+.range {
+  @apply w-full h-1.5 rounded-full appearance-none bg-line outline-none;
+}
+.range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  @apply h-4 w-4 rounded-full bg-accent border-2 border-surface shadow;
+  cursor: pointer;
+  transition: transform 0.12s ease;
+}
+.range::-webkit-slider-thumb:hover {
+  transform: scale(1.12);
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-4 h-10 text-[13px]
+    font-medium text-white shadow-sm transition hover:brightness-105 active:scale-[0.985]
+    disabled:opacity-40 disabled:pointer-events-none;
+}
+
+.btn-ghost {
+  @apply inline-flex items-center justify-center gap-2 rounded-xl border border-line px-3.5 h-10
+    text-[13px] text-ink/80 transition hover:bg-surface hover:text-ink active:scale-[0.985];
+}
+
+.chip {
+  @apply inline-flex items-center gap-1.5 rounded-full border border-line bg-surface px-2.5 py-1
+    text-[11px] text-muted;
+}
