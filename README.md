@@ -1,8 +1,28 @@
 # No Wind
 
-**A local AI computer operator for Windows. It reads the UI, clicks, types, reads web pages, and finishes multi-step tasks — with every action shown as an expandable, auditable tool card.**
+**A local AI computer operator for Windows. It reads the UI, clicks, types, reads web pages, and finishes multi-step tasks — with every action shown as an expandable, auditable tool card. Open for contributions.**
 
 No Wind runs entirely on your Windows machine. It does **not** take screenshots or upload your screen. A language model decides what to do; a local Python middleware performs the actions through UI Automation (UIA), Win32 messages, and keyboard/mouse input. API keys stay in your browser's local storage.
+
+---
+
+## Contributions welcome — please help make it stronger
+
+This is an early-stage project, and the recognition layer is the weakest part. **You are very welcome to fork it, change it, and send a pull request.** You do not need to rewrite the whole project; small fixes are welcome too.
+
+If you know more about any of these than I do, your help would be genuinely valuable:
+
+- UI Automation / MSAA / IAccessible2 probing (raw view, stable control IDs, structure-changed events, popup/tool-window enumeration)
+- DirectUI, CEF/Electron internals, or accessibility in Chinese desktop apps
+- Computer vision / OCR fallback for UIs that expose no accessibility tree
+- Hover-only and custom-drawn control discovery
+- Agent orchestration, tool design, or packaging
+
+Ways to help:
+
+- **Fork the repo** and modify it for your own use.
+- **Open an issue** with the app name, the exact step that failed, and the expanded tool card content.
+- **Send a pull request** — bug fixes, new tools, better prompts, docs, translations, anything.
 
 ---
 
